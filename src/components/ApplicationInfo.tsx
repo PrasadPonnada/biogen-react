@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { Calendar } from "./ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
@@ -11,10 +11,12 @@ import ApplicationTable from "./ApplicationTable";
 
 export default function ApplicationInfo() {
     const [date, setDate] = useState<Date | undefined>(new Date())
-    const [selectedAppName, setSelectedAppName] = useState("");
+    const [selectedAppId, setSelectedAppId] = useState(0);
+   
 
-    const onAppNameChange = (appname: string) => {
-        setSelectedAppName(appname)
+    const onAppNameChange = (id: number) => {
+        console.log('appname', id)
+        setSelectedAppId(id)
     }
 
     return (
@@ -59,7 +61,7 @@ export default function ApplicationInfo() {
                 </div>
             </div>
             <div>
-                <ApplicationTable />
+                <ApplicationTable id={selectedAppId}  />
             </div>
         </div>
     )

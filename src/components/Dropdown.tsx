@@ -2,7 +2,7 @@ import { getApplicationData } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 type DropdownProps = {
-    onChangeHandler?: (name: string) => void,
+    onChangeHandler?: (id: number) => void;
     value?: string
 }
 
@@ -11,7 +11,13 @@ const Dropdown = ({ onChangeHandler, value }: DropdownProps) => {
     const applications = getApplicationData();
 
     return (
-        <Select onValueChange={onChangeHandler} defaultValue={value}>
+        <Select onValueChange={(name) => {
+            const selectedApp = applications.find((app) => app.name === name);
+            if (onChangeHandler && selectedApp) {
+                onChangeHandler(selectedApp.id);
+            }
+            
+        }} defaultValue={value}>
             <SelectTrigger >
                 <SelectValue placeholder="Select Application" />
             </SelectTrigger>

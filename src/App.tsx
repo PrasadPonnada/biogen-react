@@ -1,13 +1,16 @@
 import ApplicationInfo from './components/ApplicationInfo'
-import NavBar from './components/NavBar'
-
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 function App() {
 
   return (
-    <div className='bg-cyan-900 w-full h-full '>
-      <NavBar />
-      <ApplicationInfo/>
+    <div className='flex h-screen flex-col'>
+      <Header />
+      <main className='flex-1'>
+        <ApplicationInfo />
+      </main>
+      <Footer />
     </div>
   )
 }
