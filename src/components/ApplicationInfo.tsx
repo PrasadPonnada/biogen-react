@@ -15,7 +15,6 @@ export default function ApplicationInfo() {
    
 
     const onAppNameChange = (id: number) => {
-        console.log('appname', id)
         setSelectedAppId(id)
     }
 

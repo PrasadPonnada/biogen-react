@@ -181,7 +181,7 @@ export function getAppControlData(): AppControlInfo[] {
       id: 1,
       name: "AC- 1: Lifecycle Management",
       complaince: 0,
-      exceptions: true,
+      exceptions: false,
       description: null
     },
     {
