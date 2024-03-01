@@ -1,6 +1,7 @@
 import ApplicationInfo from './components/ApplicationInfo'
 import NavBar from './components/NavBar'
 
+
 function App() {
 
   return (

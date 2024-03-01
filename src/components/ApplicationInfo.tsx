@@ -5,15 +5,22 @@ import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
+import Dropdown from "./Dropdown";
+import ApplicationTable from "./ApplicationTable";
 
 
 export default function ApplicationInfo() {
     const [date, setDate] = useState<Date | undefined>(new Date())
-    console.log(date)
+    const [selectedAppName, setSelectedAppName] = useState("");
+
+    const onAppNameChange = (appname: string) => {
+        setSelectedAppName(appname)
+    }
+
     return (
-        <div className="bg-white w-full h-full flex space-y-2 p-10">
-            <div>
-                <h3 className="text-2xl font-bold">Select Month</h3>
+        <div className="bg-white w-full h-full flex flex-col gap-5 space-y-2 p-10">
+            <div className="flex flex-col ">
+                <h3 className="md:text-2xl text-sm font-bold p-1 ">Select Month</h3>
                 <Popover>
                     <PopoverTrigger asChild>
                         <Button
@@ -40,10 +47,19 @@ export default function ApplicationInfo() {
                                 date > new Date() || date < new Date("1900-01-01")
                             }
                             initialFocus
-                            
+
                         />
                     </PopoverContent>
                 </Popover>
+            </div>
+            <div className="flex flex-col w-full">
+                <h3 className="md:text-2xl text-sm  font-bold p-1 ">Select Application Name</h3>
+                <div className="w-full md:w-1/2" >
+                    <Dropdown onChangeHandler={onAppNameChange} />
+                </div>
+            </div>
+            <div>
+                <ApplicationTable />
             </div>
         </div>
     )
